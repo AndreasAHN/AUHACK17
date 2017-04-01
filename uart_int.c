@@ -36,6 +36,7 @@ void InitUART(unsigned long BaudRate, unsigned char DataBit, char Parity, unsign
 		if(Rx_int != 0){
 			UCSR0B |= 1 << 7; // enable RX complete interrupt 0
 		}
+		sei();
 	}
 	
 	return;

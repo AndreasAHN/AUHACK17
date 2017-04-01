@@ -7,7 +7,7 @@
 #include "servoControl.h"
 #include <avr/io.h>
 
-void initServo(){
+void initServo(int startPos){
 	// set a timer for PWM
 	// Position "0" (1.5ms pulse) is middle, "90" 
 	// (~2ms pulse) is all the way to the right, 
@@ -22,7 +22,7 @@ void initServo(){
 	
 	TCCR1B = 0b00000011; // clock-prescaler 1/64: 122 Hz
 
-	servoSetPos(90);
+	servoSetPos(startPos);
 	//OCR1A = 835; //Mid position at start. Maybe make param?
 	//773 => 1.999 ms posWidth. All right
 	//898 => 0.999 ms posWidth. All left

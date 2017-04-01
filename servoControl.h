@@ -7,5 +7,5 @@
 
 #pragma once
 
-void initServo();
-void servoSetPos(int);
+void initServo(int startPos);
+void servoSetPos(int degrees);

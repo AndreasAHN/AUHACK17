@@ -8,7 +8,6 @@
 
 #include <avr/io.h>
 #include <avr/interrupt.h>
-//#include "Firmata.h"
 #include "servoControl.h"
 #include "uart_int.h"
 
@@ -31,12 +30,11 @@ ISR(USART0_RX_vect){ //interrupt naar arduino modtager noget
 int main(void)
 {
 	InitUART(9600, 8, 'N', 1);
-	SendChar('a');
-	initServo();
+	SendString("Connected.\n");
+	initServo(0);
 	
 	sei();
-	
-	servoSetPos(0);
+
     while(1)
     {
 		
