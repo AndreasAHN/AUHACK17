@@ -2,7 +2,7 @@
  * dcMotorControl.c
  *
  * Created: 01-04-2017 13:38:27
- *  Author: Asbjørn
+ *  Author: Asbjoern
  */ 
 #include <avr/io.h>
 #include "dcMotorControl.h"
@@ -17,9 +17,13 @@ void initDCMotor(void){
 	
 	TCCR3B = 0b00000001; // no clock prescaling
 
-	setDCMotorSpeed(1023);
+	setDCMotorSpeed(0);
 }
 
 void setDCMotorSpeed(unsigned int speed){
-	OCR3A = speed;
+	if(speed <= 100){
+		OCR3A = 1023 - (1023/100.0)*speed;
+		OCR3B = 1023 - (1023/100.0)*speed;
+		OCR3C = 1023 - (1023/100.0)*speed;
+	}	
 }
